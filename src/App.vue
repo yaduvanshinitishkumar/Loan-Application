@@ -1,18 +1,9 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <Header />
-    <q-page-container> </q-page-container>
-  </q-layout>
+  <router-view></router-view>
 </template>
 
 <script>
-import Header from "./components/layouts/Header.vue";
-
 export default {
-  name: "LayoutDefault",
-  components: { Header },
-  setup() {
-    return {};
-  },
+  name: "App",
 };
 </script>
