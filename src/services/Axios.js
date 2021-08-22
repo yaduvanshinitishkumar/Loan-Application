@@ -12,6 +12,9 @@ const axios = {
   registerLoanApplication: (url, data) => {
     console.log(url);
     console.log(data);
+    return {
+      success: true
+    };
   },
   getUserProfile: (data) => {
     console.log(data);
@@ -29,7 +32,7 @@ const axios = {
       authToken,
       success: true
     };
-  }
+  },
 
 };
 

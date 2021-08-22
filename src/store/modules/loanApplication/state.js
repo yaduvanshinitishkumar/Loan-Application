@@ -5,6 +5,8 @@ const state = {
   paymentPeriod: null,
   monthlyPayment: null,
   isTermsAndConditionConfirmed: false,
+  currentStep: 1,
+  isRegistrationSuccessful: false
 };
 
 module.exports = {

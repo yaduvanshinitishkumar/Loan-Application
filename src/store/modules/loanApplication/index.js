@@ -3,7 +3,8 @@ import mutations from "./mutation";
 import actions from "./action";
 
 const getters = {
-  loanApplicationData: (state) => state
+  loanApplicationData: (state) => state,
+  currentStep: state => state.currentStep
 };
 
 export default {

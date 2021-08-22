@@ -6,7 +6,6 @@
         <div>
           <p class="container--left__title-text text-h2 text-weight-bolder text-positive">Personal loan</p>
           <span class="container--left__subtitle-text text-caption text-weight-bold">Just few clicks away</span>
-          <!--          Stepper -->
           <div class="row flex flex-center justify-around q-mt-sm">
             <Stepper label="1" message="Loan calculator" :show-step-description="currentStep === 1" />
             <Stepper label="2" message="Loan confirmation" :show-step-description="currentStep === 2" />
@@ -37,16 +36,22 @@
 <script>
 import Spacer from "./layouts/Spacer";
 import Stepper from "./layouts/Stepper";
+import { mapState } from "vuex";
 
 export default {
   name: "LoanApplication",
   components: {
-    Stepper, Spacer },
+    Stepper, Spacer
+  },
   data() {
-    return {
-      currentStep: 1
-    };
+    return {};
+  },
+  computed: {
+    ...mapState({
+      currentStep: state => state.loanApplication.currentStep
+    })
   }
+
 
 };
 </script>

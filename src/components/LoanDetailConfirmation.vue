@@ -2,36 +2,58 @@
   <div class="row q-mt-lg">
     <div class="col">
       <div
-        v-for="loanDetail in loanDetails" :key="loanDetail.title"
         style="border-bottom: 1px solid #0c365a"
         class="row flex justify-between flex-center q-pb-sm q-mt-lg"
       >
-        <span class="text-weight-bold">{{ loanDetail.title }}</span>
-        <span class="text-weight-bold">{{ loanDetail.description }}</span>
+        <span class="text-weight-bold">Loan amount</span>
+        <span class="text-weight-bold">{{ amount }} {{ currency }}</span>
       </div>
+
+      <div
+        style="border-bottom: 1px solid #0c365a"
+        class="row flex justify-between flex-center q-pb-sm q-mt-lg"
+      >
+        <span class="text-weight-bold">Loan currency</span>
+        <span class="text-weight-bold">{{ currency }}</span>
+      </div>
+
+
+      <div
+        style="border-bottom: 1px solid #0c365a"
+        class="row flex justify-between flex-center q-pb-sm q-mt-lg"
+      >
+        <span class="text-weight-bold">Repay period</span>
+        <span class="text-weight-bold">{{ paymentPeriod }} months</span>
+      </div>
+
+
+      <div
+        style="border-bottom: 1px solid #0c365a"
+        class="row flex justify-between flex-center q-pb-sm q-mt-lg"
+      >
+        <span class="text-weight-bold">Monthly payment</span>
+        <span class="text-weight-bold">{{ monthlyPayment }} {{ currency }}</span>
+      </div>
+
 
       <div class="row q-mt-sm" style="display: flex; align-items: center;">
         <q-checkbox v-model="confirmTermsAndCondition" label="I agree with" color="teal" />
         <a href="#" class="q-ml-sm">Terms & condition</a>
       </div>
 
-      <div class="flex justify-end">
-        <RoundedButton label="590 INR" :on-click="() => {}" :is-out-line="true" style="border-radius: 40px;"
-                       color="black" />
-      </div>
       <div class="flex justify-between q-mt-xl">
         <RoundedButton
           label="back"
           style="border-radius: 30px;"
-          on-click="() => {}"
+          :on-click="() => {}"
           left-icon="fa fa-arrow-left"
           flat
           color="black"
         />
         <RoundedButton
-          label="Next"
+          label="Submit"
           style="border-radius: 30px;"
-          on-click="() => {}"
+          :on-click="submit"
           right-icon="fa fa-arrow-right"
         />
       </div>
@@ -41,20 +63,38 @@
 
 <script>
 import RoundedButton from "./layouts/RoundedButton";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "LoanDetailConfirmation",
   components: { RoundedButton },
   data() {
     return {
-      loanDetails: [
-        { title: "Loan amount", description: "13,000 INR" },
-        { title: "Loan currency", description: "INR" },
-        { title: "Repay period", description: "36 months" },
-        { title: "Monthly payment", description: "590 INR" }
-      ],
       confirmTermsAndCondition: false
     };
+  },
+  computed: {
+    ...mapState({
+      currency: state => state.loanApplication.currency,
+      paymentPeriod: state => state.loanApplication.paymentPeriod,
+      monthlyPayment: state => state.loanApplication.monthlyPayment,
+      isTermsAndConditionConfirmed: state => state.loanApplication.isTermsAndConditionConfirmed,
+      currentStep: state => state.loanApplication.currentStep,
+      amount: state => state.loanApplication.amount,
+      isRegistrationSuccessful: state => state.loanApplication.isRegistrationSuccessful.amount
+    })
+  },
+  methods: {
+    ...mapActions(["toggleTermsAndConditionCheckBox", "submitLoanApplication"]),
+    submit() {
+      this.submitLoanApplication();
+      this.$router.push({ name: "RegistrationSuccessful" });
+    }
+  },
+  watch: {
+    confirmTermsAndCondition(value) {
+      this.toggleTermsAndConditionCheckBox(value);
+    }
   }
 };
 </script>

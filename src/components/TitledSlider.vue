@@ -49,13 +49,23 @@ export default {
     },
     buttonPostFix: {
       type: String,
-      default: ''
+      default: ""
     },
     minValueCaption: {
       type: String
     },
     maxValueCaption: {
       type: String
+    },
+    onSliderChange: {
+      type: Function,
+      required: true
+    }
+  },
+  watch: {
+    value(newValue) {
+      console.log(`newValue: ${newValue} `);
+      this.onSliderChange(newValue);
     }
   }
 };
