@@ -28,7 +28,7 @@
                 </q-card-section>
                 <q-card-section>
                   <q-input
-                    class="bg-info q-pl-md"
+                    class="q-pl-md"
                     filled
                     placeholder="Username"
                     v-model="username"
@@ -36,7 +36,7 @@
                     style="border-radius: 10px;"
                   />
                   <q-input
-                    class="bg-info q-pl-md q-mt-md"
+                    class="q-pl-md q-mt-md"
                     filled
                     placeholder="Password"
                     v-model="password"

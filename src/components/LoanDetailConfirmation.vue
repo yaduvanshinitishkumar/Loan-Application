@@ -41,15 +41,7 @@
         <a href="#" class="q-ml-sm">Terms & condition</a>
       </div>
 
-      <div class="flex justify-between q-mt-xl">
-        <RoundedButton
-          label="back"
-          style="border-radius: 30px;"
-          :on-click="() => {}"
-          left-icon="fa fa-arrow-left"
-          flat
-          color="black"
-        />
+      <div class="flex justify-center q-mt-xl">
         <RoundedButton
           label="Submit"
           style="border-radius: 30px;"
@@ -87,8 +79,10 @@ export default {
   methods: {
     ...mapActions(["toggleTermsAndConditionCheckBox", "submitLoanApplication"]),
     submit() {
-      this.submitLoanApplication();
-      this.$router.push({ name: "RegistrationSuccessful" });
+      if (this.isTermsAndConditionConfirmed) {
+        this.submitLoanApplication();
+        this.$router.push({ name: "RegistrationSuccessful" });
+      }
     }
   },
   watch: {
