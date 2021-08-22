@@ -10,7 +10,7 @@
         <RoundedButton
           label="Back to home"
           style="border-radius: 30px;"
-          on-click="() => {}"
+          :on-click="() => {}"
           left-icon="fa fa-arrow-left"
           flat
           color="black"
@@ -18,7 +18,7 @@
         <RoundedButton
           label="My Profile"
           style="border-radius: 30px;"
-          on-click="() => {}"
+          :on-click="() => {}"
         />
       </div>
     </div>

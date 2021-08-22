@@ -13,14 +13,8 @@ export default {
   computed: {
     ...mapGetters(["isAuthenticated"])
   },
-  mounted() {
+  created() {
     this.autoLogin();
-    console.log(this.isAuthenticated)
-    if (this.isAuthenticated) {
-      this.$router.push({ name: "LoanCalculator" });
-    } else {
-      this.$router.push({ name: "Home" });
-    }
   }
 };
 </script>

@@ -1,16 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import store from "../store/index";
 
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters.isAuthenticated) {
+    next();
+    return;
+  }
+  next({ name: "Home" });
+};
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   },
   {
     path: "/dashboard",
     name: "Dashboard",
     component: () => import("../views/Dashboard.vue"),
+    beforeEnter: ifAuthenticated,
     children: [
       {
         path: "",
@@ -20,32 +29,38 @@ const routes = [
           {
             path: "",
             name: "LoanCalculator",
-            component: () => import("../components/LoanCalculator.vue"),
+            component: () => import("../components/LoanCalculator.vue")
           },
           {
             path: "confirm",
             name: "LoanDetailConfirmation",
-            component: () => import("../components/LoanDetailConfirmation.vue"),
+            component: () => import("../components/LoanDetailConfirmation.vue")
           },
           {
             path: "success",
             name: "RegistrationSuccessful",
-            component: () => import("../components/RegistrationSuccessful.vue"),
-          },
-        ],
-      },
-    ],
+            component: () => import("../components/RegistrationSuccessful.vue")
+          }
+        ]
+      }
+    ]
   },
   {
     path: "/admin",
     name: "Admin",
-    component: () => import("../views/Admin.vue"),
+    component: () => import("../views/Admin.vue")
   },
+  {
+    path: "/admin-dashboard",
+    name: "AdminDashboard",
+    beforeEnter: ifAuthenticated,
+    component: () => import("../components/admin/AdminDashboard.vue")
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
 
 export default router;
