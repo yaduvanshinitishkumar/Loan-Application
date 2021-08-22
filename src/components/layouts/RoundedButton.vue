@@ -11,6 +11,8 @@
     @click="onClick"
     :rounded="rounded"
     :style="extraStyle"
+    :no-caps="noCaps"
+    :dense="dense"
   />
 </template>
 
@@ -59,6 +61,14 @@ export default {
       type: Object,
       default: () => {
       }
+    },
+    noCaps: {
+      type: Boolean,
+      default: false
+    },
+    dense: {
+      type: Boolean,
+      default: false
     }
 
   }
