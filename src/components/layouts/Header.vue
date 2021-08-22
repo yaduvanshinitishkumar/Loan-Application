@@ -23,7 +23,7 @@
     <!-- Right Action -->
     <div class="col flex justify-end q-pr-sm">
       <q-avatar class="pa-none ma-none">
-        <q-btn-dropdown no-icon-animation dropdown-icon="fa fa-user">
+        <q-btn-dropdown unelevated no-icon-animation dropdown-icon="fa fa-user">
           <q-list>
             <q-item clickable v-close-popup @click="onItemClick">
               <q-item-section avatar>
