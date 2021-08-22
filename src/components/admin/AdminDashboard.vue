@@ -36,11 +36,11 @@
         </div>
         <div class="col container-right">
 
-          <div class="row q-pt-xl">
+          <div class="row q-pt-xl q-pl-md">
             <p>Account balance</p>
           </div>
 
-          <div class="row flex justify-between">
+          <div class="row flex justify-between q-pl-md">
             <div>
               <q-chip color="positive">SS</q-chip>
               <strong>3000</strong>
@@ -52,6 +52,7 @@
               :on-click="()=>{}"
               is-flat label="New card"
               no-caps
+              class="q-pr-md"
             />
           </div>
 
@@ -65,7 +66,6 @@
             >
               <q-tab :ripple="false" name="mdc" label="My debit cards" no-caps />
               <q-tab :ripple="false" name="acc" label="All company cards" no-caps />
-              <q-tab :ripple="false" name="admin" label="Admin" no-caps />
             </q-tabs>
           </div>
           <div class="right-left">
@@ -174,10 +174,6 @@
                   </q-carousel>
                 </q-tab-panel>
 
-
-                <q-tab-panel name="admin" class="bg-primary">
-                  <div class="text-h6">Admin</div>
-                </q-tab-panel>
               </q-tab-panels>
               <div class="gt-sm item-holder bg-info">
                 <div class="flex no-wrap text-center justify-around text-grey">
@@ -494,7 +490,7 @@ export default {
     }
   }
 
-  .right-left{
+  .right-left {
     display: flex;
   }
 
