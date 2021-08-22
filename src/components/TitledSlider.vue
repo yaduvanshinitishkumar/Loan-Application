@@ -32,7 +32,7 @@ export default {
   components: { RoundedButton },
   data() {
     return {
-      value: 10
+      value: 0
     };
   },
   props: {

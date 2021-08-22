@@ -1,54 +1,67 @@
 <template>
-  <q-page-container class="q-px-lg">
-    <Spacer height="90px" />
-
-    <div class="container row q-pt-lg flex flex-center">
-      <div class="container--heading text-center flex column">
-        <span class="container--heading--title text-center text-weight-bold">Loan calculator</span>
-        <span class="container--heading--subtitle">Please review and calculate your loan.</span>
+  <q-page-container class="q-px-lg row container">
+    <div class="col gt-sm container--left flex flex-center">
+      <div class="container--left__background row flex flex-center"
+           :style="{ backgroundImage: 'url(' + require('@/assets/shape1.png') + ')' }">
+        <div>
+          <p class="container--left__title-text text-h2 text-weight-bolder text-positive">Personal loan</p>
+          <span class="container--left__subtitle-text text-caption text-weight-bold">Just few clicks away</span>
+        </div>
       </div>
     </div>
+    <div class="col container--right">
+      <div class="container--right-wrapper">
+        <Spacer height="90px" />
 
-    <div class="row q-mt-lg">
-      <RoundedButton color="white" label="INR" text-color="black" :on-click="() => {}" />
-      <RoundedButton color="white" label="EUR" :is-flat="true" text-color="black" :on-click="() => {}" />
-    </div>
+        <div class="heading row q-pt-lg flex flex-center">
+          <div class="heading--wrapper text-center flex column">
+            <span class="heading--wrapper__title text-center text-weight-bold">Loan calculator</span>
+            <span class="heading--wrapper__subtitle">Please review and calculate your loan.</span>
+          </div>
+        </div>
 
-    <TitledSlider
-      title="Loan Amount"
-      button-post-fix="INR"
-      :min="5000"
-      :max="15000"
-      min-value-caption="5,000 INR"
-      max-value-caption="15,000 INR"
-    />
+        <div class="row q-mt-lg">
+          <RoundedButton color="white" label="INR" text-color="black" :on-click="() => {}" />
+          <RoundedButton color="white" label="EUR" :is-flat="true" text-color="black" :on-click="() => {}" />
+        </div>
 
-    <TitledSlider
-      title="Payment period"
-      button-post-fix="months"
-      :min="5000"
-      :max="15000"
-      min-value-caption="3 months"
-      max-value-caption="24 months"
-    />
+        <TitledSlider
+          title="Loan Amount"
+          button-post-fix="INR"
+          :min="0"
+          :max="15000"
+          min-value-caption="5,000 INR"
+          max-value-caption="15,000 INR"
+        />
 
-    <div class="row flex justify-end q-mt-md">
-      <RoundedButton
-        label="591 INR"
-        color="black"
-        :is-out-line="true"
-        style="border-radius: 30px;"
-        on-click="() => {}"
-      />
-    </div>
+        <TitledSlider
+          title="Payment period"
+          button-post-fix="months"
+          :min="0"
+          :max="15000"
+          min-value-caption="3 months"
+          max-value-caption="24 months"
+        />
 
-    <div class="row flex flex-center q-mt-xl">
-      <RoundedButton
-        label="Next"
-        style="border-radius: 30px;"
-        on-click="() => {}"
-        right-icon="fa fa-arrow-right"
-      />
+        <div class="row flex justify-end q-mt-md">
+          <RoundedButton
+            label="591 INR"
+            color="black"
+            :is-out-line="true"
+            style="border-radius: 30px;"
+            on-click="() => {}"
+          />
+        </div>
+
+        <div class="row flex flex-center q-mt-xl">
+          <RoundedButton
+            label="Next"
+            style="border-radius: 30px;"
+            on-click="() => {}"
+            right-icon="fa fa-arrow-right"
+          />
+        </div>
+      </div>
     </div>
 
   </q-page-container>
@@ -68,15 +81,72 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  padding: 0 44px;
+  height: 100vh;
 
-  &--heading {
-    &--title {
-      font-size: 28px;
+  &--right {
+
+    &-wrapper {
+
     }
 
-    &--subtitle {
-      font-size: 16px;
+    & .heading {
+      padding: 0 44px;
+
+      &--wrapper {
+        &__title {
+          font-size: 28px;
+        }
+
+        &__subtitle {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding-top: 60px;
+    &--left{
+      &__background{
+        & > div {
+          margin-bottom: 120px;
+        }
+
+        margin-bottom: 100px;
+        height: 500px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+    &--right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-wrapper {
+        padding: 0 100px;
+        background-color: #EDF3FF;
+        height: 80%;
+        min-height: 700px;
+        border-radius: 45px;
+      }
+
+      & .heading {
+        padding: 0 44px;
+
+        &--wrapper {
+          &__title {
+            font-size: 28px;
+            margin-top: 50px;
+          }
+
+          &__subtitle {
+          }
+        }
+      }
     }
   }
 }
