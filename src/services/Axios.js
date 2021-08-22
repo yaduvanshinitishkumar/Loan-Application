@@ -1,4 +1,6 @@
 // NOTE: This is a dummy service.
+const ADMIN_USERNAME = "admin";
+
 const axios = {
   login: (url, data) => {
     console.log(url);
@@ -6,12 +8,14 @@ const axios = {
       userId: data.username,
       username: data.username,
       authToken: `${data.username}-${Math.random()}`,
+      isAdmin: data.username === ADMIN_USERNAME,
       success: true
     };
   },
   registerLoanApplication: (url, data) => {
     console.log(url);
     console.log(data);
+    localStorage.setItem(data.username, JSON.stringify(data));
     return {
       success: true
     };
@@ -30,9 +34,10 @@ const axios = {
       userId,
       username,
       authToken,
+      isAdmin: username === ADMIN_USERNAME,
       success: true
     };
-  },
+  }
 
 };
 

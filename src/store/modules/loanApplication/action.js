@@ -8,7 +8,6 @@ const actions = {
     const interest = (amount * (rate * 0.01)) / months;
     const monthlyPayment = ((amount / months) + interest).toFixed(2);
 
-    debugger;
     const loanApplicationData = {
       ...data,
       currentStep: 2,
@@ -20,14 +19,16 @@ const actions = {
   toggleTermsAndConditionCheckBox({ commit }, isTermsAndConditionConfirmed) {
     commit("TOGGLE_TERMS_AND_CONDITION", isTermsAndConditionConfirmed);
   },
-  submitLoanApplication({ state, commit }) {
+  submitLoanApplication({ state, commit }, { username }) {
+    debugger;
     const data = {
       currency: state.currency,
       paymentPeriod: state.paymentPeriod,
       monthlyPayment: state.monthlyPayment,
       isTermsAndConditionConfirmed: state.isTermsAndConditionConfirmed,
       currentStep: state.currentStep,
-      amount: state.amount
+      amount: state.amount,
+      username: username
     };
 
     const response = axios.registerLoanApplication("/register", data);

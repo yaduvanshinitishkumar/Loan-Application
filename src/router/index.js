@@ -16,6 +16,12 @@ const routes = [
     component: Home
   },
   {
+    path: "/profile",
+    name: "Profile",
+    beforeEnter: ifAuthenticated,
+    component: () => import("../components/Profile.vue")
+  },
+  {
     path: "/dashboard",
     name: "Dashboard",
     component: () => import("../views/Dashboard.vue"),
@@ -40,7 +46,7 @@ const routes = [
             path: "success",
             name: "RegistrationSuccessful",
             component: () => import("../components/RegistrationSuccessful.vue")
-          }
+          },
         ]
       }
     ]

@@ -73,15 +73,15 @@ export default {
       isTermsAndConditionConfirmed: state => state.loanApplication.isTermsAndConditionConfirmed,
       currentStep: state => state.loanApplication.currentStep,
       amount: state => state.loanApplication.amount,
-      isRegistrationSuccessful: state => state.loanApplication.isRegistrationSuccessful.amount
+      isRegistrationSuccessful: state => state.loanApplication.isRegistrationSuccessful.amount,
+      username: state => state.auth.username
     })
   },
   methods: {
     ...mapActions(["toggleTermsAndConditionCheckBox", "submitLoanApplication"]),
     submit() {
-      debugger;
       if (this.isTermsAndConditionConfirmed) {
-        this.submitLoanApplication();
+        this.submitLoanApplication({ username: this.username });
         this.$router.push({ name: "RegistrationSuccessful" });
       }
     }

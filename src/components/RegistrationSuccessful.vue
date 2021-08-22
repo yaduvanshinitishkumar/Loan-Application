@@ -10,7 +10,7 @@
         <RoundedButton
           label="Back to home"
           style="border-radius: 30px;"
-          :on-click="() => $router.push({name:'LoanCalculator'})"
+          :on-click="() => this.$router.push({name:'LoanApplication'})"
           left-icon="fa fa-arrow-left"
           flat
           color="black"
@@ -18,7 +18,7 @@
         <RoundedButton
           label="My Profile"
           style="border-radius: 30px;"
-          :on-click="() => {}"
+          :on-click="() => this.$router.push({name:'Profile'})"
         />
       </div>
     </div>
