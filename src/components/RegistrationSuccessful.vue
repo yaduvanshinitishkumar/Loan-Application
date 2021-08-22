@@ -10,7 +10,7 @@
         <RoundedButton
           label="Back to home"
           style="border-radius: 30px;"
-          :on-click="() => {}"
+          :on-click="$router.push({name:'LoanCalculator'})"
           left-icon="fa fa-arrow-left"
           flat
           color="black"
@@ -27,6 +27,7 @@
 
 <script>
 import RoundedButton from "./layouts/RoundedButton";
+
 export default {
   name: "RegistrationSuccessful",
   components: { RoundedButton }

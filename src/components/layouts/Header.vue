@@ -31,7 +31,7 @@
       </div>
     </div>
     <!-- Right Action -->
-    <div class="col flex justify-end q-pr-xl">
+    <div v-if="isAuthenticated" class="col flex justify-end q-pr-xl">
       <q-avatar class="pa-none ma-none" :class="{'text-white':!isLightThemeHeader}">
         <q-btn-dropdown unelevated no-icon-animation dropdown-icon="fa fa-user">
           <q-list>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Header",
@@ -64,6 +64,9 @@ export default {
       this.logout();
       this.$router.push({ name: "Home" });
     }
+  },
+  computed:{
+    ...mapGetters(['isAuthenticated'])
   }
 };
 </script>
