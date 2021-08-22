@@ -14,10 +14,13 @@ export default {
   name: "InputField",
   date() {
     return {
-      value: ""
+      value: null
     };
   },
   props: {
+    value: {
+      type: String
+    },
     placeholder: {
       type: String
     },

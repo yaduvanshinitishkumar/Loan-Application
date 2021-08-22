@@ -1,10 +1,10 @@
 const mutations = {
-  LOGIN: (state, formData) => {
+  SET_AUTH_DATA: (state, formData) => {
     state.username = formData.username;
     state.userId = formData.userId;
     state.authToken = formData.authToken;
   },
-  LOGOUT: (state) => {
+  RESET_AUTH_DATA: (state) => {
     state.username = null;
     state.userId = null;
     state.authToken = null;

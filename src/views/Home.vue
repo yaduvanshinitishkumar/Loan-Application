@@ -27,11 +27,25 @@
                   <h5 class="text-positive text-weight-bolder">Login</h5>
                 </q-card-section>
                 <q-card-section>
-                  <InputField placeholder="Username" />
-                  <InputField class="q-mt-md" placeholder="Password" type="password" />
+                  <q-input
+                    class="bg-info q-pl-md"
+                    filled
+                    placeholder="Username"
+                    v-model="username"
+                    type="passoword"
+                    style="border-radius: 10px;"
+                  />
+                  <q-input
+                    class="bg-info q-pl-md q-mt-md"
+                    filled
+                    placeholder="Password"
+                    v-model="password"
+                    type="password"
+                    style="border-radius: 10px;"
+                  />
                 </q-card-section>
                 <q-card-section class="text-center">
-                  <RoundedButton label="Login" :on-click="() => {}" textColor="white" />
+                  <RoundedButton label="Login" :on-click="loginHandler" textColor="white" />
                 </q-card-section>
               </q-card>
             </div>
@@ -46,19 +60,42 @@
 
 <script>
 import Header from "@/components/layouts/Header.vue";
-import InputField from "../components/layouts/InputField.vue";
 import RoundedButton from "../components/layouts/RoundedButton";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "Home",
   components: {
     Header,
-    InputField,
     RoundedButton
   },
-  date() {
-    return {};
-  }
+  data() {
+    return {
+      ...mapState({
+        isAuthenticated: state => state.isAuthenticated
+      }),
+      username: "",
+      password: ""
+    };
+  },
+  methods: {
+    ...mapActions(["login", "logout"]),
+    loginHandler() {
+      console.log(this.username);
+      console.log(this.password);
+      if (this.username && this.password) {
+        const formData = {
+          username: this.username,
+          password: this.password
+        };
+        this.login(formData);
+        if (this.isAuthenticated) {
+          this.$router.push({ name: "LoanCalculator" });
+        }
+      }
+    }
+  },
+
 };
 </script>
 
@@ -94,6 +131,7 @@ export default {
   .home {
     &--right {
       background-image: none !important;
+
       &__card {
         background-color: transparent;
         @media only screen and (min-width: 1023px) {

@@ -4,7 +4,7 @@ import actions from "./action";
 
 const getters = {
   auth: (state) => state,
-  isAuthenticated: state => state.userId && state.authToken
+  isAuthenticated: state => state.userId !== null && state.authToken !== null
 };
 
 export default {
