@@ -10,6 +10,7 @@
     :icon-right="rightIcon"
     @click="onClick"
     :rounded="rounded"
+    :style="extraStyle"
   />
 </template>
 
@@ -26,7 +27,7 @@ export default {
       default: "positive"
     },
     textColor: {
-      type: String,
+      type: String
     },
     isFlat: {
       type: Boolean,
@@ -53,6 +54,11 @@ export default {
     onClick: {
       type: Function,
       required: true
+    },
+    extraStyle: {
+      type: Object,
+      default: () => {
+      }
     }
 
   }

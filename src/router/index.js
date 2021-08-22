@@ -8,6 +8,18 @@ const routes = [
     component: Home,
   },
   {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: () => import("../views/Dashboard.vue"),
+    children:[
+      {
+        path: "",
+        name: "LoanApplication",
+        component:  () => import("../components/LoanApplication.vue"),
+      },
+    ]
+  },
+  {
     path: "/admin",
     name: "Admin",
     component: () => import("../views/Admin.vue"),
