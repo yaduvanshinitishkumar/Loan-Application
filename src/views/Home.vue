@@ -83,9 +83,25 @@ export default {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    @media only screen and (min-width: 1023px) {
-      background-image: none !important;
+
+    &__card {
+      background-color: transparent;
     }
   }
+}
+
+@media only screen and (min-width: 1023px) {
+  .home {
+    &--right {
+      background-image: none !important;
+      &__card {
+        background-color: transparent;
+        @media only screen and (min-width: 1023px) {
+          background-color: white;
+        }
+      }
+    }
+  }
+
 }
 </style>

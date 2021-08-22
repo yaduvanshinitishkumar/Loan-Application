@@ -1,10 +1,11 @@
 <template>
   <q-input
-    class="bg-info q-pl-sm"
+    class="bg-info q-pl-md"
     v-model="value"
     :placeholder="placeholder"
     :dense="dense"
     :type="type"
+    style="border-radius: 10px;"
   />
 </template>
 
