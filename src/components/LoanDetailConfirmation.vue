@@ -79,6 +79,7 @@ export default {
   methods: {
     ...mapActions(["toggleTermsAndConditionCheckBox", "submitLoanApplication"]),
     submit() {
+      debugger;
       if (this.isTermsAndConditionConfirmed) {
         this.submitLoanApplication();
         this.$router.push({ name: "RegistrationSuccessful" });
