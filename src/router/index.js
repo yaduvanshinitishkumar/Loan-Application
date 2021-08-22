@@ -11,13 +11,30 @@ const routes = [
     path: "/dashboard",
     name: "Dashboard",
     component: () => import("../views/Dashboard.vue"),
-    children:[
+    children: [
       {
         path: "",
         name: "LoanApplication",
-        component:  () => import("../components/LoanApplication.vue"),
+        component: () => import("../components/LoanApplication.vue"),
+        children: [
+          {
+            path: "",
+            name: "LoanCalculator",
+            component: () => import("../components/LoanCalculator.vue"),
+          },
+          {
+            path: "confirm",
+            name: "LoanDetailConfirmation",
+            component: () => import("../components/LoanDetailConfirmation.vue"),
+          },
+          {
+            path: "success",
+            name: "RegistrationSuccessful",
+            component: () => import("../components/RegistrationSuccessful.vue"),
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     path: "/admin",

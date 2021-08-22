@@ -27,8 +27,7 @@
           </div>
         </div>
 
-<!--        <LoanCalculator/>-->
-        <LoanDetailConfirmation/>
+        <router-view></router-view>
       </div>
     </div>
 
@@ -38,14 +37,10 @@
 <script>
 import Spacer from "./layouts/Spacer";
 import Stepper from "./layouts/Stepper";
-import LoanDetailConfirmation from "./LoanDetailConfirmation";
-// import LoanCalculator from "./LoanCalculator";
 
 export default {
   name: "LoanApplication",
   components: {
-    LoanDetailConfirmation,
-    // LoanCalculator,
     Stepper, Spacer },
   data() {
     return {
