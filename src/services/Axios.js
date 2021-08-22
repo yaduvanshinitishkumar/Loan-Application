@@ -5,7 +5,8 @@ const axios = {
     return {
       userId: data.username,
       username: data.username,
-      token: `${data.username} + ${Math.random()}`
+      authToken: `${data.username} + ${Math.random()}`,
+      success: true
     };
   },
   registerLoanApplication: (url, data) => {

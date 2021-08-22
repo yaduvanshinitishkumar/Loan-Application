@@ -1,12 +1,19 @@
+import Axios from "../../../services/Axios";
+
 const actions = {
-  login({state,commit},formData){
+  login({ commit }, formData) {
     const username = formData.username;
     const password = formData.password;
     console.log(username);
     console.log(password);
-    commit();
-    console.log(state);
+    const response = Axios.login("/login", { username, password });
+    if (response.success) {
+      commit("LOGIN", response);
+    }
+  },
+  logout({ commit }) {
+    commit("LOGOUT");
   }
-}
+};
 
 export default actions;
