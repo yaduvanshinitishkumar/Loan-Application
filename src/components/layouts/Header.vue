@@ -35,7 +35,7 @@
       <q-avatar class="pa-none ma-none" :class="{'text-white':!isLightThemeHeader}">
         <q-btn-dropdown unelevated no-icon-animation dropdown-icon="fa fa-user">
           <q-list>
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup @click="handleLogout">
               <q-item-section avatar>
                 <q-btn unelevated> Logout</q-btn>
               </q-item-section>
@@ -48,12 +48,21 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Header",
   props: {
     isLightThemeHeader: {
       type: Boolean,
       default: true
+    }
+  },
+  methods: {
+    ...mapActions(["logout"]),
+    handleLogout() {
+      this.logout();
+      this.$router.push({ name: "Home" });
     }
   }
 };

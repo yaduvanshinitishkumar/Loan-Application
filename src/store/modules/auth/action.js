@@ -15,6 +15,7 @@ const actions = {
   },
 
   logout({ commit }) {
+    localStorage.clear();
     commit("RESET_AUTH_DATA");
   },
 
