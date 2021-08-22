@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-page class="bg-primary text-white">
       <q-page-container class="container row">
-        <div class="col-2 gt-md container-left">
+        <div class="col-3 gt-sm container-left">
           <div class="row text-positive container-left--header">
             <img :src="require('../../assets/admin/Logo.svg')" />
             <span>aspire</span>
@@ -34,39 +34,44 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="q-px-lg">
-            <AdminHeader />
+        <div class="col container-right">
 
-            <div class="row q-pt-xl">
-              <p>Account balance</p>
+          <div class="row q-pt-xl">
+            <p>Account balance</p>
+          </div>
+
+          <div class="row flex justify-between">
+            <div>
+              <q-chip color="positive">SS</q-chip>
+              <strong>3000</strong>
             </div>
 
-            <div class="row flex justify-between">
-              <div>
-                <q-chip color="positive">SS</q-chip>
-                <strong>3000</strong>
-              </div>
+            <RoundedButton
+              dense color="secondary"
+              left-icon="fa fa-plus-circle"
+              :on-click="()=>{}"
+              is-flat label="New card"
+              no-caps
+            />
+          </div>
 
-              <RoundedButton
-                dense color="secondary"
-                left-icon="fa fa-plus-circle"
-                :on-click="()=>{}"
-                is-flat label="New card"
-                no-caps
-              />
-
-              <q-tabs
-                v-model="tab"
-                dense
-                align="justify"
-                class="text-white q-mt-md"
-                indicator-color="secondary"
-              >
-                <q-tab :ripple="false" name="mdc" label="My debit cards" no-caps />
-                <q-tab :ripple="false" name="acc" label="All company cards" no-caps />
-                <q-tab :ripple="false" name="admin" label="Admin" no-caps />
-              </q-tabs>
+          <div style="max-width: 400px">
+            <q-tabs
+              v-model="tab"
+              dense
+              align="justify"
+              class="q-mt-md container-right--tabs"
+              indicator-color="secondary"
+            >
+              <q-tab :ripple="false" name="mdc" label="My debit cards" no-caps />
+              <q-tab :ripple="false" name="acc" label="All company cards" no-caps />
+              <q-tab :ripple="false" name="admin" label="Admin" no-caps />
+            </q-tabs>
+          </div>
+          <div class="right-left">
+            <!--          Right - LEFT-->
+            <div class="q-px-lg col">
+              <AdminHeader class="lt-sm" />
 
               <q-tab-panels v-model="tab" animated class="transparent" style="width: 100%">
                 <q-tab-panel name="mdc">
@@ -121,6 +126,51 @@
 
                       </div>
                     </q-carousel-slide>
+
+
+                    <q-carousel-slide name="card-blue" class="column no-wrap flex-center">
+                      <div class="bg-secondary credit-card">
+
+                        <div class="row flex justify-end q-pt-md q-pr-md">
+                          <img :src="require('../../assets/admin/logo-white.svg')" />
+                        </div>
+                        <div class="row flex justify-start q-pt-md q-pl-md">
+                          <strong>Mark Henry</strong>
+                        </div>
+                        <div class="row flex justify-start q-pt-md q-pl-md">
+                          <div class="q-mr-md">
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                          </div>
+                          <div class="q-mr-md">
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                          </div>
+                          <div class="q-mr-md">
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                            <i class="fas fa-circle q-mr-xs credit-card--dot"></i>
+                          </div>
+                          <div class="q-mr-md credit-card--last-digits">
+                            <strong class="q-mr-xs">2020</strong>
+                          </div>
+                        </div>
+
+                        <div class="row flex justify-start q-pt-md q-pl-md">
+                          <p>Thru: 12/20</p> <span class="q-ml-lg">CVV: ***</span>
+                        </div>
+                        <div class="row flex justify-end q-pr-md">
+                          <img :src="require('../../assets/admin/Visa Logo.svg')" />
+                        </div>
+
+                      </div>
+                    </q-carousel-slide>
+
                   </q-carousel>
                 </q-tab-panel>
 
@@ -129,107 +179,135 @@
                   <div class="text-h6">Admin</div>
                 </q-tab-panel>
               </q-tab-panels>
-            </div>
-          </div>
-
-          <div class="drawer">
-
-            <div class="item-holder bg-info">
-              <div class="flex no-wrap text-center justify-around text-grey">
-                <div class="column q-pa-sm">
-                  <img :src="require('../../assets/admin/Freeze card.svg')" />
-                  <span class="q-mt-sm">Freeze card</span>
-                </div>
-                <div class="column q-pa-sm">
-                  <img :src="require('../../assets/admin/Set spend limit.svg')" />
-                  <span class="q-mt-sm">Set spend limit</span>
-                </div>
-                <div class="column q-pa-sm">
-                  <img :src="require('../../assets/admin/GPay.svg')" />
-                  <span class="q-mt-sm">Add to GPay</span>
-                </div>
-                <div class="column q-pa-sm">
-                  <img :src="require('../../assets/admin/Replace card.svg')" />
-                  <span class="q-mt-sm">Replace card</span>
-                </div>
-                <div class="column q-pa-sm">
-                  <img :src="require('../../assets/admin/Deactivate card.svg')" />
-                  <span class="q-mt-sm">Cancel card</span>
+              <div class="gt-sm item-holder bg-info">
+                <div class="flex no-wrap text-center justify-around text-grey">
+                  <div class="column q-pa-sm">
+                    <img :src="require('../../assets/admin/Freeze card.svg')" />
+                    <span class="q-mt-sm">Freeze card</span>
+                  </div>
+                  <div class="column q-pa-sm">
+                    <img :src="require('../../assets/admin/Set spend limit.svg')" />
+                    <span class="q-mt-sm">Set spend limit</span>
+                  </div>
+                  <div class="column q-pa-sm">
+                    <img :src="require('../../assets/admin/GPay.svg')" />
+                    <span class="q-mt-sm">Add to GPay</span>
+                  </div>
+                  <div class="column q-pa-sm">
+                    <img :src="require('../../assets/admin/Replace card.svg')" />
+                    <span class="q-mt-sm">Replace card</span>
+                  </div>
+                  <div class="column q-pa-sm">
+                    <img :src="require('../../assets/admin/Deactivate card.svg')" />
+                    <span class="q-mt-sm">Cancel card</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div>
-              <div class="credit-card-details flex justify-between q-pa-lg q-ma-md bg-info text-black">
-                <div class="flex flex-center">
-                  <img :src="require('../../assets/admin/Card details.svg')" />
-                  <span class="q-ml-md">Card details</span>
-                </div>
-                <div>
-                  <img :src="require('../../assets/admin/down-arrow.svg')" />
-                </div>
-              </div>
-            </div>
+            <div class="col">
+              <!--          Right - Right-->
+              <div class="drawer">
 
-            <div class="card">
-              <div class="recent-transactions flex justify-between q-pa-lg q-ma-md bg-info text-black">
-                <div class="flex flex-center">
-                  <img :src="require('../../assets/admin/left-right-arrow.svg')" />
-                  <span class="q-ml-md">Recent transactions</span>
-                </div>
-                <div>
-                  <img :src="require('../../assets/admin/up-arrow.svg')" />
-                </div>
-              </div>
-              <q-card flat>
-                <div class="row text-black flex justify-between q-pa-lg">
-                  <div class="flex">
-                    <div class="q-pa-md bg-info circular-image">
-                      <img :src="require('../../assets/admin/file-storage.svg')" />
+                <div class="lt-sm item-holder bg-info">
+                  <div class="flex no-wrap text-center justify-around text-grey">
+                    <div class="column q-pa-sm">
+                      <img :src="require('../../assets/admin/Freeze card.svg')" />
+                      <span class="q-mt-sm">Freeze card</span>
                     </div>
-                    <div class="q-ml-sm">
-                      <span>Hamleys</span><br>
-                      <span>20 May 2020</span>
-                      <div class="flex q-mt-sm">
-                        <div class="bg-primary caption-circular-image">
-                          <img :src="require('../../assets/admin/business-and-finance.svg')" />
+                    <div class="column q-pa-sm">
+                      <img :src="require('../../assets/admin/Set spend limit.svg')" />
+                      <span class="q-mt-sm">Set spend limit</span>
+                    </div>
+                    <div class="column q-pa-sm">
+                      <img :src="require('../../assets/admin/GPay.svg')" />
+                      <span class="q-mt-sm">Add to GPay</span>
+                    </div>
+                    <div class="column q-pa-sm">
+                      <img :src="require('../../assets/admin/Replace card.svg')" />
+                      <span class="q-mt-sm">Replace card</span>
+                    </div>
+                    <div class="column q-pa-sm">
+                      <img :src="require('../../assets/admin/Deactivate card.svg')" />
+                      <span class="q-mt-sm">Cancel card</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div>
+                  <div class="credit-card-details flex justify-between q-pa-lg q-ma-md bg-info text-black">
+                    <div class="flex flex-center">
+                      <img :src="require('../../assets/admin/Card details.svg')" />
+                      <span class="q-ml-md">Card details</span>
+                    </div>
+                    <div>
+                      <img :src="require('../../assets/admin/down-arrow.svg')" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="recent-transactions flex justify-between q-pa-lg q-ma-md bg-info text-black">
+                    <div class="flex flex-center">
+                      <img :src="require('../../assets/admin/left-right-arrow.svg')" />
+                      <span class="q-ml-md">Recent transactions</span>
+                    </div>
+                    <div>
+                      <img :src="require('../../assets/admin/up-arrow.svg')" />
+                    </div>
+                  </div>
+                  <q-card flat>
+                    <div class="row text-black flex justify-between q-pa-lg">
+                      <div class="flex">
+                        <div class="q-pa-md bg-info circular-image">
+                          <img :src="require('../../assets/admin/file-storage.svg')" />
                         </div>
-                        <span class="q-ml-sm">Refund on debit card</span>
+                        <div class="q-ml-sm">
+                          <span>Hamleys</span><br>
+                          <span>20 May 2020</span>
+                          <div class="flex q-mt-sm">
+                            <div class="bg-primary caption-circular-image">
+                              <img :src="require('../../assets/admin/business-and-finance.svg')" />
+                            </div>
+                            <span class="q-ml-sm">Refund on debit card</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="text-positive">
+                        <span>+$$ 150</span>
                       </div>
                     </div>
-                  </div>
+                  </q-card>
 
-                  <div class="text-positive">
-                    <span>+$$ 150</span>
-                  </div>
-                </div>
-              </q-card>
-
-              <q-card flat class="q-mt-sm">
-                <div class="row text-black flex justify-between q-pa-lg">
-                  <div class="flex">
-                    <div class="q-pa-md bg-info circular-image">
-                      <img :src="require('../../assets/admin/file-storage.svg')" />
-                    </div>
-                    <div class="q-ml-sm">
-                      <span>Hamleys</span><br>
-                      <span>20 May 2020</span>
-                      <div class="flex q-mt-sm">
-                        <div class="bg-primary caption-circular-image">
-                          <img :src="require('../../assets/admin/business-and-finance.svg')" />
+                  <q-card flat class="q-mt-sm">
+                    <div class="row text-black flex justify-between q-pa-lg">
+                      <div class="flex">
+                        <div class="q-pa-md bg-info circular-image">
+                          <img :src="require('../../assets/admin/file-storage.svg')" />
                         </div>
-                        <span class="q-ml-sm">Refund on debit card</span>
+                        <div class="q-ml-sm">
+                          <span>Hamleys</span><br>
+                          <span>20 May 2020</span>
+                          <div class="flex q-mt-sm">
+                            <div class="bg-primary caption-circular-image">
+                              <img :src="require('../../assets/admin/business-and-finance.svg')" />
+                            </div>
+                            <span class="q-ml-sm">Refund on debit card</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="text-positive">
+                        <span>+$$ 150</span>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="text-positive">
-                    <span>+$$ 150</span>
-                  </div>
+                  </q-card>
                 </div>
-              </q-card>
-            </div>
 
+              </div>
+            </div>
           </div>
 
           <!--        FOOTER-->
@@ -330,6 +408,13 @@ export default {
       }
     }
   }
+
+  &-right {
+
+    &--tabs {
+
+    }
+  }
 }
 
 .credit-card {
@@ -385,6 +470,35 @@ export default {
     justify-content: center;
     align-items: center;
   }
+}
+
+@media screen and (min-width: 1024px) {
+  .q-tab__label {
+    color: black !important;
+  }
+  .container {
+    .item-holder {
+      border-radius: 20px;
+      padding: 10px;
+    }
+
+    &-right {
+      background-color: white;
+      color: black;
+      height: 100vh;
+      padding: 20px;
+
+      &--tabs {
+        color: black !important;
+      }
+    }
+  }
+
+  .right-left{
+    display: flex;
+  }
+
+
 }
 
 </style>
