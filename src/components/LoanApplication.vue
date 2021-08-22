@@ -6,6 +6,23 @@
         <div>
           <p class="container--left__title-text text-h2 text-weight-bolder text-positive">Personal loan</p>
           <span class="container--left__subtitle-text text-caption text-weight-bold">Just few clicks away</span>
+          <div class="row flex flex-center justify-around q-mt-sm">
+            <div class="q-mr-md">
+              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="1" style="border-radius: 100%" color="white"
+                             text-color="black" />
+              <span v-if="currentStep === 1">Loan calculator</span>
+            </div>
+            <div class="q-mr-md">
+              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="2" style="border-radius: 100%" color="white"
+                             text-color="black" />
+              <span v-if="currentStep === 2">Loan confirmation</span>
+            </div>
+            <div class="q-mr-md">
+              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="3" style="border-radius: 100%" color="white"
+                             text-color="black" />
+              <span v-if="currentStep === 3">Completed</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -74,7 +91,12 @@ import TitledSlider from "./TitledSlider";
 
 export default {
   name: "LoanApplication",
-  components: { TitledSlider, RoundedButton, Spacer }
+  components: { TitledSlider, RoundedButton, Spacer },
+  data(){
+    return {
+      currentStep: 1
+    }
+  }
 
 };
 </script>
@@ -108,8 +130,9 @@ export default {
 @media screen and (min-width: 1024px) {
   .container {
     padding-top: 60px;
-    &--left{
-      &__background{
+
+    &--left {
+      &__background {
         & > div {
           margin-bottom: 120px;
         }
@@ -121,6 +144,7 @@ export default {
         background-position: center;
       }
     }
+
     &--right {
       display: flex;
       justify-content: center;
