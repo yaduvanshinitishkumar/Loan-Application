@@ -5,7 +5,7 @@
 
     <q-page-container class="bg-primary">
       <q-page class="home">
-        <div class="row fullscreen">
+        <div class="row" style="height: 100vh">
 
           <!--          Left Section -->
           <div class="home--left col-6 gt-sm bg-white flex flex-center">

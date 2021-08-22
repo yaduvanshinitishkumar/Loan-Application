@@ -1,28 +1,38 @@
 <template>
-  <q-header
-    class="q-py-sm row"
+  <div
+    class="q-py-sm row header fixed-top q-pt-lg"
     :class="{
       'transparent text-primary': isLightThemeHeader,
     }"
   >
     <!-- Left Branding -->
-    <div class="col"></div>
-
+    <div class="col q-pl-xl">
+     <div class="gt-sm">
+       <q-avatar>
+         <img
+           src="https://media-exp1.licdn.com/dms/image/C560BAQHw4Jpn0midiA/company-logo_200_200/0/1597287478522?e=2159024400&v=beta&t=oGyrDRachcXisR6fwWv9rU8YEVBiiFkyXwGBDE5_XuM"
+         />
+       </q-avatar>
+       <span class="q-ml-md text-weight-bolder text-h6">ASPIRE</span>
+     </div>
+    </div>
     <!-- Center Branding -->
     <div
       class="col-7 text-center text-bold"
       :class="{ 'text-white': !isLightThemeHeader }"
     >
-      <q-avatar>
-        <img
-          src="https://media-exp1.licdn.com/dms/image/C560BAQHw4Jpn0midiA/company-logo_200_200/0/1597287478522?e=2159024400&v=beta&t=oGyrDRachcXisR6fwWv9rU8YEVBiiFkyXwGBDE5_XuM"
-        />
-      </q-avatar>
-      ASPIRE
+     <div class="lt-md">
+       <q-avatar>
+         <img
+           src="https://media-exp1.licdn.com/dms/image/C560BAQHw4Jpn0midiA/company-logo_200_200/0/1597287478522?e=2159024400&v=beta&t=oGyrDRachcXisR6fwWv9rU8YEVBiiFkyXwGBDE5_XuM"
+         />
+       </q-avatar>
+       <span>ASPIRE</span>
+     </div>
     </div>
     <!-- Right Action -->
-    <div class="col flex justify-end q-pr-sm">
-      <q-avatar class="pa-none ma-none">
+    <div class="col flex justify-end q-pr-xl">
+      <q-avatar class="pa-none ma-none text-white">
         <q-btn-dropdown unelevated no-icon-animation dropdown-icon="fa fa-user">
           <q-list>
             <q-item clickable v-close-popup @click="onItemClick">
@@ -34,7 +44,7 @@
         </q-btn-dropdown>
       </q-avatar>
     </div>
-  </q-header>
+  </div>
 </template>
 
 <script>
@@ -43,11 +53,17 @@ export default {
   props: {
     isLightThemeHeader: {
       type: Boolean,
-      default: true,
-    },
-  },
+      default: true
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.header {
+  z-index: 1;
+  @media only screen and (min-width: 1023px) {
+    //background-color: red !important;
+  }
+}
 </style>
