@@ -6,26 +6,16 @@
         <div>
           <p class="container--left__title-text text-h2 text-weight-bolder text-positive">Personal loan</p>
           <span class="container--left__subtitle-text text-caption text-weight-bold">Just few clicks away</span>
+          <!--          Stepper -->
           <div class="row flex flex-center justify-around q-mt-sm">
-            <div class="q-mr-md">
-              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="1" style="border-radius: 100%" color="white"
-                             text-color="black" />
-              <span v-if="currentStep === 1">Loan calculator</span>
-            </div>
-            <div class="q-mr-md">
-              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="2" style="border-radius: 100%" color="white"
-                             text-color="black" />
-              <span v-if="currentStep === 2">Loan confirmation</span>
-            </div>
-            <div class="q-mr-md">
-              <RoundedButton class="q-mr-md" :on-click="()=>{}" label="3" style="border-radius: 100%" color="white"
-                             text-color="black" />
-              <span v-if="currentStep === 3">Completed</span>
-            </div>
+            <Stepper label="1" message="Loan calculator" :show-step-description="currentStep === 1" />
+            <Stepper label="2" message="Loan confirmation" :show-step-description="currentStep === 2" />
+            <Stepper label="3" message="Registration Successful" :show-step-description="currentStep === 3" />
           </div>
         </div>
       </div>
     </div>
+
     <div class="col container--right">
       <div class="container--right-wrapper">
         <Spacer height="90px" />
@@ -88,14 +78,15 @@
 import Spacer from "./layouts/Spacer";
 import RoundedButton from "./layouts/RoundedButton";
 import TitledSlider from "./TitledSlider";
+import Stepper from "./layouts/Stepper";
 
 export default {
   name: "LoanApplication",
-  components: { TitledSlider, RoundedButton, Spacer },
-  data(){
+  components: { Stepper, TitledSlider, RoundedButton, Spacer },
+  data() {
     return {
       currentStep: 1
-    }
+    };
   }
 
 };
