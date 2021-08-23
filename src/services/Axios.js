@@ -15,7 +15,15 @@ const axios = {
   registerLoanApplication: (url, data) => {
     console.log(url);
     console.log(data);
-    localStorage.setItem(data.username, JSON.stringify(data));
+    let applicationDatas = [];
+    try {
+      const existingApplicationData = JSON.parse(localStorage.getItem("applicationData"));
+      applicationDatas = [...existingApplicationData, data];
+    } catch (e) {
+      console.log(e);
+      applicationDatas.push(data);
+    }
+    localStorage.setItem("applicationData", JSON.stringify(applicationDatas));
     return {
       success: true
     };

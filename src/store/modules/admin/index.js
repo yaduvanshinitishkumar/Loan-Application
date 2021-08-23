@@ -3,7 +3,7 @@ import mutations from "./mutation";
 import actions from "./action";
 
 const getters = {
-  adminData: (state) => state
+  adminData: (state) => state,
 };
 
 export default {

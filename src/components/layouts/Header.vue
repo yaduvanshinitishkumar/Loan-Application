@@ -35,9 +35,19 @@
       <q-avatar class="pa-none ma-none" :class="{'text-white':!isLightThemeHeader}">
         <q-btn-dropdown unelevated no-icon-animation dropdown-icon="fa fa-user">
           <q-list>
-            <q-item clickable v-close-popup @click="handleLogout">
+            <q-item v-if="isAdmin" clickable v-close-popup>
               <q-item-section avatar>
-                <q-btn unelevated> Logout</q-btn>
+                <q-btn unelevated @click="() => this.$router.push({name:'Profile'})"> Admin</q-btn>
+              </q-item-section>
+            </q-item>
+            <q-item v-if="!isAdmin" clickable v-close-popup>
+              <q-item-section avatar>
+                <q-btn unelevated @click="() => this.$router.push({name:'Profile'})"> Profile</q-btn>
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup>
+              <q-item-section avatar>
+                <q-btn unelevated @click="handleLogout"> Logout</q-btn>
               </q-item-section>
             </q-item>
           </q-list>
@@ -65,8 +75,8 @@ export default {
       this.$router.push({ name: "Home" });
     }
   },
-  computed:{
-    ...mapGetters(['isAuthenticated'])
+  computed: {
+    ...mapGetters(["isAuthenticated", "isAdmin"])
   }
 };
 </script>

@@ -28,7 +28,7 @@
                 </q-card-section>
                 <q-card-section>
                   <q-input
-                    class="q-pl-md"
+                    class="form-input"
                     filled
                     placeholder="Username"
                     v-model="username"
@@ -36,7 +36,7 @@
                     style="border-radius: 10px;"
                   />
                   <q-input
-                    class="q-pl-md q-mt-md"
+                    class="q-mt-md form-input"
                     filled
                     placeholder="Password"
                     v-model="password"
@@ -116,6 +116,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form-input{
+  background-color: white;
+}
 .home {
   &--left {
     &__background {
