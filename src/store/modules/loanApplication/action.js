@@ -20,7 +20,6 @@ const actions = {
     commit("TOGGLE_TERMS_AND_CONDITION", isTermsAndConditionConfirmed);
   },
   submitLoanApplication({ state, commit }, { username }) {
-    debugger;
     const data = {
       currency: state.currency,
       paymentPeriod: state.paymentPeriod,
@@ -36,7 +35,8 @@ const actions = {
     if (response.success) {
       commit("SET_REGISTRATION_STATUS", response.success);
     } else {
-      // TODO: Push Error
+      commit("setError", [{ title: "Registration Failed", message: "Loan application details are incorrect!" }]);
+      commit("resetError");
       commit("SET_REGISTRATION_STATUS", false);
     }
   }

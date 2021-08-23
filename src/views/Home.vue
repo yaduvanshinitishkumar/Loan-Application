@@ -79,10 +79,18 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["login", "logout"]),
+    ...mapActions(["login", "logout", "setErrorMessage"]),
     loginHandler() {
       console.log(this.username);
       console.log(this.password);
+      if (!this.username) return this.setErrorMessage([{
+        title: "Invalid Username",
+        message: "Username is required!"
+      }]);
+      if (!this.password) return this.setErrorMessage([{
+        title: "Invalid Password",
+        message: "Password is required!"
+      }]);
       if (this.username && this.password) {
         const formData = {
           username: this.username,
@@ -94,7 +102,7 @@ export default {
         }
       }
     }
-  },
+  }
 
 };
 </script>

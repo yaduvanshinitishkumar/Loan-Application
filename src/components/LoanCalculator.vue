@@ -77,7 +77,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(["calculateLoan"]),
+    ...mapActions(["calculateLoan", "setErrorMessage"]),
     handleCurrency(currency) {
       this.currency = currency;
     },
@@ -90,13 +90,15 @@ export default {
     isValid(data) {
       const errors = [];
       if (!data || !data.amount || data.amount === 0) {
-        // TODO: Push to Error Handler
         errors.push("Amount is required!");
         console.log("Amount is required!");
+        this.setErrorMessage([{ title: "Invalid Amount", message: "Amount is required!" }]);
       }
       if (!data || !data.paymentPeriod || data.paymentPeriod === 0) {
         errors.push("Payment Period is required!");
         console.log("Payment Period is required!");
+        this.setErrorMessage([{ title: "Invalid Amount", message: "Amount is required!" }]);
+        this.setErrorMessage([{ title: "Payment Period", message: "Payment Period is required!" }]);
       }
 
       if (errors.length > 0) return false;
