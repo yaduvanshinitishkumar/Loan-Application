@@ -1,5 +1,10 @@
 # loan-application
 
+# Preview Link
+Link: https://romantic-banach-56c3b7.netlify.app/
+
+# Adobe XD UI 
+https://drive.google.com/file/d/15OZoLsOHdKBBM-bwox0vLN_BZywBmvDB/view?usp=sharing
 ## Project setup
 ```
 npm install
@@ -25,5 +30,3 @@ npm run test:unit
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
