@@ -61,7 +61,7 @@
 <script>
 import Header from "@/components/layouts/Header.vue";
 import RoundedButton from "../components/layouts/RoundedButton";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   name: "Home",
@@ -101,6 +101,14 @@ export default {
           this.$router.push({ name: "LoanCalculator" });
         }
       }
+    }
+  },
+  computed:{
+    ...mapGetters(['isAuthenticated'])
+  },
+  mounted() {
+    if(this.isAuthenticated){
+      this.$router.push({ name: "LoanCalculator" });
     }
   }
 

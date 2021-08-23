@@ -49,7 +49,6 @@ export default {
         const loanData = localStorage.getItem(this.username);
         const data = JSON.parse(loanData);
         this.currentLoanData = data;
-        debugger;
         console.log(loanData);
       } catch (e) {
         console.log(e);
